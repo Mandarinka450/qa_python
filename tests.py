@@ -55,12 +55,12 @@ class TestBooksCollector:
         collector = BooksCollector()
         collector.add_new_book(book_name)
         collector.set_book_genre(book_name, book_genre)
-        assert collector.books_genre[book_name] == 'Комедии'
+        assert collector.get_book_genre(book_name) == 'Комедии'
 
     def test_get_books_genre_add_book_and_books_genre_not_empty(self):
         collector = BooksCollector()
         collector.add_new_book('Ходячие мертвецы')
-        assert len(collector.books_genre) != {}
+        assert collector.get_books_genre() != {}
 
     def test_add_book_in_favorites_get_name_added_book_from_favorites(self):
         book_name = 'Ходячие мертвецы'
@@ -83,7 +83,7 @@ class TestBooksCollector:
         for name in books_name:
             collector.add_new_book(name)
             collector.add_book_in_favorites(name)
-        assert collector.favorites != []
+        assert collector.get_list_of_favorites_books() != []
 
     def test_get_books_with_specific_genre_get_list_of_books_with_genre_is_horror(self):
         collector = BooksCollector()
